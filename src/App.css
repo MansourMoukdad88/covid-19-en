@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh; 
-  margin-top: 20px;
+/*   margin-top: 20px; */
 }
 .container {
   background: #36D1DC;  /* fallback for old browsers */
@@ -28,7 +28,7 @@ body {
 
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  width: 400px;
+  width: 430px;
   padding: 30px 40px;
   grid-template-columns: repeat(3, 1fr);
 
