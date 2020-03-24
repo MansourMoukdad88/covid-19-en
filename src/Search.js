@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import {Confirmed, ConfirmedLabel, Recovered, RecoveredLabel, Deaths, DeathsLabel, DivUpdate} from './styled'
 
-class Search extends Component {
+class Search2 extends Component {
 
     state = {
       values: [],
@@ -20,22 +20,11 @@ class Search extends Component {
     fetch(`https://covid19.mathdro.id/api/countries/`)
     .then(response => response.json())
     .then(data => {
-      // this.setState({test: data.countries})
-      // console.log("qqqqq", Object.keys(data.iso3));
-      
-      let iso3Array = [];
-      let iso3 = Object.keys(data.iso3);
-      iso3.map(key => {
-        iso3Array.push(key);
-      });
-
-      let namesOfCountries = Object.keys(data.countries);
-      let optionsArray = [];
-      namesOfCountries.map(key => {
-        optionsArray.push(key);
-      });
-
-      this.setState({names: optionsArray, value:iso3Array});
+      let arrayOfNames = [];
+      data.countries.map((country) => {
+        arrayOfNames.push(country.name);
+      })
+      this.setState({ names:arrayOfNames});
     });
   }
 
@@ -52,12 +41,16 @@ class Search extends Component {
       let lastUpdate = data.lastUpdate
       let currentCountry = val
       this.setState({confirmed, recovered, deaths, currentCountry, lastUpdate})
+      console.log("Changed");
     });
+    
   };
 
 // Render function 
   render() {
+    
     const { names, confirmed, recovered, deaths, currentCountry, lastUpdate } = this.state;
+    // console.log(names);
     const renderName = names.map((el,index) => { 
       return(
         <Fragment key={index}>
@@ -99,4 +92,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default Search2;

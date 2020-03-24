@@ -8,8 +8,8 @@ import UAE from "./UAE"
 import KSA from "./KSA"
 import EG from "./EG"
 import Sy from "./Sy"
-// import LB from "./LB"
 import Search from "./Search";
+
 import styled from 'styled-components'
 
 
@@ -27,8 +27,7 @@ class App extends Component {
           <h1>Covid-19 <img src={logo} className="App-logo" alt="logo" />  Corona</h1>
           <DivToday>{today}</DivToday>
           <H5>Made by <a href="http://codings.io">codings.io</a></H5>
-          <br></br><br></br>
-          {/* <Search/> */}
+          <Search/>
           <Global/>
           <Jo/>
           <Kw/>
