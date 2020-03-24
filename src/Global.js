@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
+import {Confirmed, ConfirmedLabel, Recovered, RecoveredLabel, Deaths, DeathsLabel, DivUpdate} from './styled'
+
 
 class Global extends Component {
   state = {
@@ -10,38 +12,36 @@ class Global extends Component {
     fetch("https://covid19.mathdro.id/api")
     .then(response => response.json())
     .then(data => {
-      console.log("GLOBAL", data);
-      
       let globalConfirmed = data.confirmed.value;
       let globalRecovered = data.recovered.value;
       let globalDeaths = data.deaths.value;
-      let global = [globalConfirmed, globalRecovered, globalDeaths];
-      this.setState({ global:global })
+      let update = data.lastUpdate;
+      let global = [globalConfirmed, globalRecovered, globalDeaths, update];      this.setState({ global:global })
     });
   }
 
   render() {
-    let som = this.state
-   
+    let som = this.state;
+    let renderState = som.global;
+    let update = som.global[3];
+    let toUpdate = (update && (<div>Updated: {new Date(update).toLocaleString()}</div>))
     return (
       <div className="entireData-items">
-        <h2>Total World Cases</h2>
+        <h1>Total World Cases</h1>
         <div className="global-item">
-          <p style={{"color": "orange", "fontWeight":"bold", "fontSize":"16px"}}> {som.global[0]} </p>
-          <label  style={{"color": "orange", "fontSize":"12px"}}>Confirmed</label>
+          <Confirmed> {renderState[0]} </Confirmed>
+          <ConfirmedLabel>confirmed</ConfirmedLabel>
         </div>
         <div className="global-item">
-          <p style={{"color": "green", "fontWeight":"bold", "fontSize":"16px"}}> {som.global[1]}</p>
-          <label style={{"color": "green", "fontSize":"12px"}}>Recovered</label>
+          <Recovered> {renderState[1]}</Recovered>
+          <RecoveredLabel>recovered</RecoveredLabel>
         </div>
         <div className="global-item">
-          <p style={{"color": "red", "fontWeight":"bold", "fontSize":"16px"}}> {som.global[2]}</p>
-          <label style={{"color": "red", "fontSize":"12px"}}>Deaths</label>
+          <Deaths> {renderState[2]}</Deaths>
+          <DeathsLabel>deaths</DeathsLabel>
         </div>
-
-        <br></br>
-        <br></br>
-
+          <br></br><br></br>
+        <DivUpdate>{toUpdate}</DivUpdate>
       </div>
     )
   }

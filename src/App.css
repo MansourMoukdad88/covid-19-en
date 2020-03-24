@@ -1,16 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
+
+.App-logo {
+  height: 7vmin;
+  pointer-events: none;
+}
+h1.App-logo {
+  margin-top: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 *{
   margin: 0;
   box-sizing: border-box;
-  /* background-color: #282c34; */
-
 }
 
 body {
-  /* background-color: #FFF; */
   color: #FFF;
-
 }
 .app {
   font-family: 'Open Sans', sans-serif;
@@ -18,24 +54,23 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh; 
-/*   margin-top: 20px; */
 }
 .container {
   background: #36D1DC;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
-
-  border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   width: 430px;
   padding: 30px 40px;
   grid-template-columns: repeat(3, 1fr);
-
 }
 h1, h2 {
   text-align: center;
-  margin: 0 0 20px;
+  margin: 0 0 20px 0;
+}
+h1 {
+  font-family: 'Prompt';
 }
 .entireData-items {
   margin-bottom: 10px;
@@ -48,23 +83,40 @@ h1, h2 {
   display: block;
   display: block;
   width: 100%;
-  padding: 0px;
+  padding: 10px;
   font-size: 14px;
   border-radius: 4px;
   text-align: center;
   align-items: stretch;
 
-  background: #36D1DC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: rgba(000, 000, 000,.1);  /* fallback for old browsers */  
   -webkit-box-shadow: 2px 2px 10px -4px rgba(255,255,255,1);
   -moz-box-shadow: 2px 2px 10px -4px rgba(255,255,255,1);
   box-shadow: 2px 2px 5px -4px rgba(255,255,255,1);
 }
 .global-item {
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 10px;
   text-align: center;
+  font-size: 17px;
+}
+
+/* Search */
+
+.select-item {
+  width: 100%;
+  cursor: pointer;
+  background-color: rgba(000, 000, 000,.1);
+  margin: 30px 0;
+  padding: 30px 50px !important;
+  align-items: center;
+  outline: 0;
+  color: #FFF;
   font-size: 20px;
+  font-weight: bold;
+  font-family: 'Prompt';
+  border: none;
+  letter-spacing: 1px;
+  text-align-last:center;
+  padding-right: 20px;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Global from "./Global";
 import Jo from "./Jo";
@@ -6,83 +7,40 @@ import Kw from "./Kw";
 import UAE from "./UAE"
 import KSA from "./KSA"
 import EG from "./EG"
+import Sy from "./Sy"
+// import LB from "./LB"
+import Search from "./Search";
+import styled from 'styled-components'
+
 
 class App extends Component {
   
-  state = {
-    data: null
-  };
-
-  componentDidMount(){
-    fetch("https://covid19.mathdro.id/api/countries/[country]/confirmed")
-    .then(response => response.json())
-    .then(data => {
-      console.log("App", data);
-      
-      let entireData = data.map((el, index) => {
-        if(el.provinceState !== null ) {
-        return (
-          <div className="entireData-items" key={index}>            
-              <h3><strong>{el.countryRegion}, {el.provinceState}:</strong></h3>
-              <div className="global-item">
-                <p style={{"color": "orange", "fontWeight":"bold"}}> {el.confirmed} </p>
-                <label  style={{"color": "orange", "fontSize":"12px"}}>Confirmed</label>
-              </div>
-              <div className="global-item">
-                <p style={{"color": "green", "fontWeight":"bold"}}> {el.recovered}</p>
-                <label style={{"color": "green", "fontSize":"12px"}}>Recovered</label>
-              </div>
-              <div className="global-item">
-                <p style={{"color": "red", "fontWeight":"bold"}}> {el.deaths}</p>
-                <label style={{"color": "red", "fontSize":"12px"}}>Deaths</label>
-              </div>
-          </div>
-        )
-        } else {
-          return (
-            <div className="entireData-items" key={index}>            
-                <h3><strong>{el.countryRegion}</strong></h3>
-                <div className="global-item">
-                  <p style={{"color": "orange", "fontWeight":"bold"}}> {el.confirmed} </p>
-                  <label  style={{"color": "orange", "fontSize":"12px"}}>Confirmed</label>
-                </div>
-                <div className="global-item">
-                  <p style={{"color": "green", "fontWeight":"bold"}}> {el.recovered}</p>
-                  <label style={{"color": "green", "fontSize":"12px"}}>Recovered</label>
-                </div>
-
-                <div className="global-item">
-                  <p style={{"color": "red", "fontWeight":"bold"}}> {el.deaths}</p>
-                  <label style={{"color": "red", "fontSize":"12px"}}>Deaths</label>
-                </div>
-            </div>
-          )
-        }
-    })
-      this.setState({data: entireData})
-      // console.log(data);
-    });
-  }
-
-
   render() {
+    var today = new Date().toLocaleDateString('en-GB', {
+      day : 'numeric',
+      month : 'short',
+      year : 'numeric'
+      }).split(' ').join('-');
     return (
       <div className="app">
         <div className="container">
-          <h1>Covid-19  -- Corona</h1>
-          <h5 style={{"fontSize": "8px", "textAlign":"center"}}>Made by <a href="http://codings.io">codings.io</a></h5>
-          <br></br>
+          <h1>Covid-19 <img src={logo} className="App-logo" alt="logo" />  Corona</h1>
+          <DivToday>{today}</DivToday>
+          <H5>Made by <a href="http://codings.io">codings.io</a></H5>
+          <br></br><br></br>
+          {/* <Search/> */}
           <Global/>
           <Jo/>
           <Kw/>
+          <Sy/>
           <UAE/>
           <KSA/>
+          {/* <LB/> */}
           <EG/>
-          <h1> All The World</h1>
-          <div className="dataContainer" >{this.state.data}</div>
-          <h5 style={{"fontSize": "12px", "textAlign":"center"}}>Made by <a href="http://codings.io">codings.io</a>@ 2020</h5>
           <br></br>
-          <p style={{"fontSize": "8px", "textAlign":"center"}}> Api by <a href="http://https://github.com/mathdroid/covid-19-api">mathdroid</a> </p>
+          <H5footer>Made by <a href="http://codings.io">codings.io</a>@ 2020</H5footer>
+          <br></br>
+          <Pfooter> Api by <a href="http://https://github.com/mathdroid/covid-19-api">mathdroid</a> </Pfooter>
         </div>
       </div>
      
@@ -92,25 +50,23 @@ class App extends Component {
 
 export default App;
 
-
-
-              // provinceState: "Hubei"
-              // countryRegion: "China"
-              // lastUpdate: 1584504796000
-              // lat: 30.9756403482891
-              // long: 112.270692167452
-              // confirmed: 67800
-              // recovered: 56886
-              // deaths: 3122
-              // active: 7792
-              // admin2: null
-              // fips: null
-              // combinedKey: null
-              // iso2: "CN"
-              // iso3: "CHN"
-  //       console.log("Country Name:...", countryName)
-        // console.log("Confirmed:...", confirmed)
-
-  //     })
-  //   })
-  // }
+const DivToday = styled.div`
+  text-align: center;
+  margin: 10px;
+  background-color: #5B86E5;
+  width: 100px;
+  border-radius: 3px;
+`
+const H5 = styled.h5`
+  font-size: 8px;
+  text-align: left;
+  margin-left: 10px;
+`
+const H5footer = styled.h5`
+  font-size: 12px;
+  text-align: center;
+`
+const Pfooter = styled.p`
+  font-size: 8px;
+  text-align: right;
+`
