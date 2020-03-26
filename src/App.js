@@ -4,17 +4,16 @@ import './App.css';
 import Global from "./Global";
 import Jo from "./Jo";
 import Kw from "./Kw";
-import UAE from "./UAE"
-import KSA from "./KSA"
-import EG from "./EG"
-import Sy from "./Sy"
-import Search from "./Search";
-
-import styled from 'styled-components'
-
-
+import UAE from "./UAE";
+import KSA from "./KSA";
+import EG from "./EG";
+import LB from "./LB";
+import Sy from "./Sy";
+import Search from "./components/Search";
+import InstructionTicker from "./components/InstructionTicker";
 class App extends Component {
   
+
   render() {
     var today = new Date().toLocaleDateString('en-GB', {
       day : 'numeric',
@@ -24,9 +23,10 @@ class App extends Component {
     return (
       <div className="app">
         <div className="container">
-          <h1>Covid-19 <img src={logo} className="App-logo" alt="logo" />  Corona</h1>
-          <DivToday>{today}</DivToday>
-          <H5>Made by <a href="http://codings.io">codings.io</a></H5>
+          <InstructionTicker/>
+          <h1 className="app-heading">Corona  <img src={logo} className="App-logo" alt="logo" />  كورونا</h1>
+          <div style={{"textAlign":"center","margin":"10px 0 0 5px", "backgroundColor":"#5B86E5", "width": "100px", "borderRadius":"3px"}}>{today}</div>
+          <h5 style={{"fontSize": "8px", "textAlign":"left", "marginLeft":"16px"}}>Made by <a href="http://codings.io">codings.io</a></h5>
           <Search/>
           <Global/>
           <Jo/>
@@ -34,12 +34,12 @@ class App extends Component {
           <Sy/>
           <UAE/>
           <KSA/>
-          {/* <LB/> */}
+          <LB/>
           <EG/>
           <br></br>
-          <H5footer>Made by <a href="http://codings.io">codings.io</a>@ 2020</H5footer>
+          <h5 style={{"fontSize": "12px", "textAlign":"center"}}>Made by <a href="http://codings.io">codings.io</a>@ 2020</h5>
           <br></br>
-          <Pfooter> Api by <a href="http://https://github.com/mathdroid/covid-19-api">mathdroid</a> </Pfooter>
+          <p style={{"fontSize": "8px", "textAlign":"right"}}> Api by <a href="http://https://github.com/mathdroid/covid-19-api">mathdroid</a> </p>
         </div>
       </div>
      
@@ -48,24 +48,3 @@ class App extends Component {
 }
 
 export default App;
-
-const DivToday = styled.div`
-  text-align: center;
-  margin: 10px;
-  background-color: #5B86E5;
-  width: 100px;
-  border-radius: 3px;
-`
-const H5 = styled.h5`
-  font-size: 8px;
-  text-align: left;
-  margin-left: 10px;
-`
-const H5footer = styled.h5`
-  font-size: 12px;
-  text-align: center;
-`
-const Pfooter = styled.p`
-  font-size: 8px;
-  text-align: right;
-`
