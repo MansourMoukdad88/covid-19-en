@@ -27,21 +27,21 @@ class Global extends Component {
     let toUpdate = (update && (<div> {new Date(update).toLocaleString()}</div>))
     return (
       <div className="entireData-items">
-        <h1>جميع دول العالم</h1>
+        <h1>All The World</h1>
         <div className="global-item">
           <Confirmed> {renderState[0]} </Confirmed>
-          <ConfirmedLabel>المصابون</ConfirmedLabel>
+          <ConfirmedLabel>confirmed</ConfirmedLabel>
         </div>
         <div className="global-item">
           <Recovered> {renderState[1]}</Recovered>
-          <RecoveredLabel>المتعافون</RecoveredLabel>
+          <RecoveredLabel>recovered</RecoveredLabel>
         </div>
         <div className="global-item">
           <Deaths> {renderState[2]}</Deaths>
-          <DeathsLabel>الوفيات</DeathsLabel>
+          <DeathsLabel>deaths</DeathsLabel>
         </div>
           <br></br><br></br>
-        <DivUpdate>آخر تحديث{toUpdate}</DivUpdate>
+        <DivUpdate>Updated{toUpdate}</DivUpdate>
       </div>
     )
   }

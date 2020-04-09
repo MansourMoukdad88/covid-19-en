@@ -23,22 +23,22 @@ class Sy extends Component {
     let update = som.global[3]
     return (
       <div className="entireData-items">
-        <h1>سوريا</h1>
+        <h1>Syria</h1>
         <div className="global-item">
           <p style={{"color": "orange", "fontWeight":"bold", "fontSize":"30px"}}> {som.global[0]} </p>
-          <label  style={{"color": "orange", "fontSize":"16px", "fontWeight":"bold",}}>المصابون</label>
+          <label  style={{"color": "orange", "fontSize":"16px", "fontWeight":"bold",}}>confirmed</label>
         </div>
         <div className="global-item">
           <p style={{"color": "green", "fontWeight":"bold", "fontSize":"30px"}}> {som.global[1]}</p>
-          <label style={{"color": "green", "fontSize":"16px", "fontWeight":"bold",}}>المتعافون</label>
+          <label style={{"color": "green", "fontSize":"16px", "fontWeight":"bold",}}>recovered</label>
         </div>
         <div className="global-item">
           <p style={{"color": "rgba(216, 48, 34", "fontWeight":"bold", "fontSize":"30px"}}> {som.global[2]}</p>
-          <label style={{"color": "rgba(216, 48, 34", "fontSize":"16px", "fontWeight":"bold",}}>الوفيات</label>
+          <label style={{"color": "rgba(216, 48, 34", "fontSize":"16px", "fontWeight":"bold",}}>deaths</label>
         </div>
 
         <br></br><br></br>
-        <div style={{"fontSize":"12px", "color":"white"}}>آخر تحديث{ update && (<div> {new Date(update).toLocaleString()}</div>)}</div>
+        <div style={{"fontSize":"12px", "color":"white"}}>Updated{ update && (<div> {new Date(update).toLocaleString()}</div>)}</div>
       </div>
     )
   }
